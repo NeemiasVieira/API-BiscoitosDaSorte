@@ -1,4 +1,4 @@
-import { Body, Controller, Post, Res, Delete, Get } from '@nestjs/common';
+import { Body, Controller, Post, Res, Delete, Get, Param, HttpException } from '@nestjs/common';
 import { FeedbacksService } from './feedbacks.service';
 import { Response } from 'express';
 
@@ -8,29 +8,19 @@ export class FeedbacksController {
     constructor(private readonly appservice: FeedbacksService){}
 
     @Get()
-    getFeedbacks() : Promise<object[]>{
-        return this.appservice.getFeedbacks();
+    listarFeedbacks() : Promise<object[]>{
+        return this.appservice.listarFeedbacks();
     }
 
     @Post()
-    colherFeedbacks(@Body() body: { nota: number, mensagem: string }, @Res() res: Response) : void{
+    async criarFeedback(@Body() body: { nota: number, mensagem: string }, @Res() res: Response) : Promise<void>{
         const { nota, mensagem } = body;
-        res.send(this.appservice.colherFeedbacks({nota, mensagem})).status(201);
+        res.status(201).send(await this.appservice.criarFeedback({nota, mensagem}));
     }
 
-    @Delete('/delete')
-    deletarConteudo(@Res() res: Response): void {
-        // feedbacks.pop();
-        // console.log(feedbacks);
-        res.status(204)
+    @Delete('/excluir/:id')
+    async excluirFeedback(@Res() res: Response, @Param('id') id: number): Promise<void> {
+        await this.appservice.excluirFeedback(id)
+        res.status(204).send();
     }
-
-    // @Patch('/atualizar')
-    // atualizarConteudo(@Res() res: Response, @Body() body : {livroInserido: string, posicao : number}) : void{
-    //     const {livroInserido, posicao} = body;
-    //     feedbacks.splice(posicao, 1, livroInserido);
-    //     console.log(feedbacks)
-    //     res.status(201).send();
-    // }
-
 }

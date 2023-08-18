@@ -1,5 +1,6 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, HttpException } from '@nestjs/common';
 import { Feedbacks } from './feedback.model';
+
 
 interface feedbacks{
     nota: number,
@@ -9,18 +10,26 @@ interface feedbacks{
 @Injectable()
 export class FeedbacksService {
 
-    async getFeedbacks() : Promise<object[]> {  
+    async listarFeedbacks() : Promise<object[]> {  
         let feedbacks = await Feedbacks.findAll()
         const feedbacksFormatados = feedbacks.map((feedback) => {
-            return {nota: feedback.nota, mensagem: feedback.mensagem}
+            return {id: feedback.id, nota: feedback.nota, mensagem: feedback.mensagem}
         })
         return feedbacksFormatados;
     }     
  
-
-    async colherFeedbacks(feedback: feedbacks) {
+    async criarFeedback(feedback: feedbacks) : Promise<string>{
         const {nota, mensagem} = feedback;
         await Feedbacks.create({nota, mensagem});
-        return {nota, mensagem}
+        return `O feedback foi enviado com sucesso!`
+    }
+
+    async excluirFeedback(id: number) : Promise<void> {
+        const feedbackExiste = await Feedbacks.findOne({where: {id}})
+        if(!feedbackExiste){
+            throw new HttpException("O ID que você tentou excluir não existe", 404)
+        }
+        else await Feedbacks.destroy({where: {id}});
+        
     }
 }

@@ -1,12 +1,10 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
 import { BiscoitosService } from './biscoitos.service';
 
-
-
 @Controller('biscoitos')
 export class BiscoitosController {
     constructor(private readonly appservice: BiscoitosService) { }
-    //Refatorando
+
     @Get()
     async listarTodos(): Promise<object> {
         return await this.appservice.getTodososBiscoitos();

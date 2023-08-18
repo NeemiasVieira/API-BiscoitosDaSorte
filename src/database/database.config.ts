@@ -9,18 +9,20 @@ export const databaseProviders = [
     useFactory: async () => {
       const sequelize = new Sequelize({
         dialect: 'postgres',
-        host: 'localhost',
+        host: 'biscoitos-da-sorte.postgres.database.azure.com',
         port: 5432, // A porta padrão do PostgreSQL
-        username: 'postgres',
-        password: '123456',
-        database: 'postgres',      
-
-      });
+        username: 'neemias',
+        password: 'SenhaDoBanco987@_',
+        database: 'postgres',
+        dialectOptions: {
+          ssl: {      require: true, 
+          }
+      }});
       sequelize.addModels([Feedbacks, BiscoitosDaSorte, BiscoitosDoAzar])
       await sequelize.sync();
       try {
         await sequelize.authenticate();
-        console.log('Connection has been established successfully.');
+        console.log('Conexão com o banco de dados estabelecida com sucesso  ');
       } catch (error) {
         console.error('Unable to connect to the database:', error);
       }
