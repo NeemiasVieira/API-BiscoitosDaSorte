@@ -1,5 +1,6 @@
-import { Injectable, HttpException } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { Feedbacks } from './feedback.model';
+import { TratarErro } from 'src/erros';
 
 
 interface feedbacks{
@@ -27,9 +28,9 @@ export class FeedbacksService {
     async excluirFeedback(id: number) : Promise<void> {
         const feedbackExiste = await Feedbacks.findOne({where: {id}})
         if(!feedbackExiste){
-            throw new HttpException("O ID que você tentou excluir não existe", 404)
+            throw new TratarErro(404, "O ID que você tentou excluir não existe");
         }
-        else await Feedbacks.destroy({where: {id}});
+        await Feedbacks.destroy({where: {id}});
         
     }
 }

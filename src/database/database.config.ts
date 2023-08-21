@@ -23,8 +23,8 @@ export const databaseProviders = [
       try {
         await sequelize.authenticate();
         console.log('Conexão com o banco de dados estabelecida com sucesso 🚀');
-      } catch (error) {
-        console.error('Unable to connect to the database:', error);
+      } catch (erro) {
+        console.error('Conexão com o banco de dados falhou', erro);
       }
     },
   },

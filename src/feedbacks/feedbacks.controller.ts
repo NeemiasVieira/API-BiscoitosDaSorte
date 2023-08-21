@@ -1,4 +1,4 @@
-import { Body, Controller, Post, Res, Delete, Get, Param, HttpException } from '@nestjs/common';
+import { Body, Controller, Post, Res, Delete, Get, Param } from '@nestjs/common';
 import { FeedbacksService } from './feedbacks.service';
 import { Response } from 'express';
 
