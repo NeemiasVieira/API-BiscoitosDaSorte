@@ -31,6 +31,10 @@ Essa API foi desenvolvida como Desafio 2 do processo de formação da ModalGR.<b
 A url base foi publicada e está disponível para uso apenas para clients de teste em: <br>
 https://api-biscoitos-da-sorte.vercel.app/
 
+## Documentação da API
+
+[Acessar Documentação da API](https://drive.google.com/file/d/1P7sK41a9wAyBubLISeLIT8EnJJLrQttP/view?usp=drive_link)
+
 ## Instalação
 
 ```bash
