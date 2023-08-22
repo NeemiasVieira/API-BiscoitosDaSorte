@@ -27,8 +27,8 @@
 
 ## Descrição
 
-Essa API foi desenvolvida como Desafio 2 do processo de formação da ModalGR.
-A url base foi publicada e está disponível para uso apenas para clients de teste em: 
+Essa API foi desenvolvida como Desafio 2 do processo de formação da ModalGR.<br>
+A url base foi publicada e está disponível para uso apenas para clients de teste em: <br>
 https://api-biscoitos-da-sorte.vercel.app/
 
 ## Instalação
@@ -48,5 +48,4 @@ $ npm run start:dev
 ```
 ## License
 
-Nest is [MIT licensed](LICENSE).
->>>>>>> master
+[MIT licensed](LICENSE).
