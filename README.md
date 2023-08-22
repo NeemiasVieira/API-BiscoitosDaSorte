@@ -48,4 +48,4 @@ $ npm run start:dev
 ```
 ## License
 
-[MIT licensed](LICENSE).
+[Licença](LICENSE).
