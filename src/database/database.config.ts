@@ -2,6 +2,7 @@ import { Sequelize } from 'sequelize-typescript';
 import { Feedbacks } from 'src/feedbacks/feedback.model';
 import { BiscoitosDaSorte } from 'src/biscoitos-da-sorte/BiscoitoDaSorte.model';
 import { BiscoitosDoAzar } from 'src/biscoitos-do-azar/biscoitos-do-azar.model';
+import pg from 'pg'
 
 export const databaseProviders = [
   {
@@ -14,6 +15,7 @@ export const databaseProviders = [
         username: 'neemias',
         password: 'SenhaDoBanco987@_',
         database: 'postgres',
+        dialectModule: pg,
         dialectOptions: {
           ssl: {      require: true, 
           }
