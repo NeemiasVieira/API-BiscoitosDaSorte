@@ -33,4 +33,13 @@ export class FeedbacksService {
         await Feedbacks.destroy({where: {id}});
         
     }
+
+    async atualizarFeedback(id: number, nota: number, mensagem: string){
+        const feedbackExiste = await Feedbacks.findOne({where: {id}});
+        if (!feedbackExiste) throw new TratarErro(404, "O Feedback não existe!");
+        feedbackExiste.set({nota, mensagem});
+        await feedbackExiste.save();
+        return "O feedback foi atualizado com sucesso";
+
+    }
 }

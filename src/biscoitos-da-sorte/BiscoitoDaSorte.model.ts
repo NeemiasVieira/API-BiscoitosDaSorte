@@ -6,5 +6,5 @@ export class BiscoitosDaSorte extends Model {
     type: DataType.STRING,
     allowNull: false,
   })
-  biscoitoDaSorte: string;
+  mensagem: string;
 }

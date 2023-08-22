@@ -1,7 +1,7 @@
 import { Sequelize } from 'sequelize-typescript';
 import { Feedbacks } from 'src/feedbacks/feedback.model';
-import { BiscoitosDaSorte } from 'src/biscoitos/models/biscoitoDaSorte.model';
-import { BiscoitosDoAzar } from 'src/biscoitos/models/biscoitoDoAzar.model';
+import { BiscoitosDaSorte } from 'src/biscoitos-da-sorte/BiscoitoDaSorte.model';
+import { BiscoitosDoAzar } from 'src/biscoitos-do-azar/biscoitos-do-azar.model';
 
 export const databaseProviders = [
   {
